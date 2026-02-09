@@ -20,14 +20,15 @@ void main()
 	printf("*** Binary Search Tree ***");
 	
 	do {
-		printf("\nEnter your choice:");
+		printf("\n\nEnter your choice:");
 		printf("\n1. Create");
 		printf("\n2. Search");
 		printf("\n3. Insert");
 		printf("\n4. Inorder");
 		printf("\n5. Preorder");
 		printf("\n6. Postorder");
-		printf("\n7. Exit\n");
+		printf("\n7. Delete Node");
+		printf("\n8. Exit\n");
 		scanf("%d", &ch);
 
 		switch(ch){
@@ -69,12 +70,18 @@ void main()
 			case 6:
 				postOrder(root);
 				break;
+			case 7: 
+				int value;
+				printf("Enter value to be deleted: ");
+				scanf("%d", &value);
+				deleteNode(root, value);
+				break;
 			default:
-				printf("Invalid choice !!");
+				printf("\nInvalid choice !!");
 				break;
 		}
 		
-	}while(ch != 7);
+	}while(ch != 8);
 
 	root = create(root, 3);
 	root = create(root, 4);

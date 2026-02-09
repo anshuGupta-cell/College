@@ -178,3 +178,33 @@ int max(struct node *root)
 
 	return max_val;
 }
+
+
+struct node *inOrderPredecessor(struct node *root){
+	root = root->left;
+	while(root->right != NULL){
+		root = root->right;
+	}
+	return root;
+}
+
+struct node *deleteNode(struct node *root, int value){
+	struct node *iPre= NULL;
+	if(root == NULL)
+		return NULL;
+	if (root->left == NULL && root->right == NULL ){
+		free(root);
+		return NULL;
+	}
+	if(value < root-> data ){
+		root->left = deleteNode(root -> left, value);
+	}else if(value > root ->data){
+		root-> right = deleteNode(root->right, value);
+	}else {
+		iPre = inOrderPredecessor(root);
+		root->data = iPre->data;
+		root->left = deleteNode(root->left, iPre->data);
+	}
+	return root;
+	
+}
