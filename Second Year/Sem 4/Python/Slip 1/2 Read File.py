@@ -6,13 +6,16 @@ path = os.getcwd()
 
 files = os.listdir(path)
 
+# all files
 print("Filels in cwd")
 for file in files:
     print(file)
 
+# python files
 pyFiles = [f for f in files if f.endswith(".py")]
 print(pyFiles.__len__())
 
+# print file content
 if pyFiles:
     file_name = pyFiles[0]
     print(file_name)
